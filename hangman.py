@@ -10,11 +10,11 @@ letters='abcdefghijklmnopqrstuvwxyz'
 clf = joblib.load("trained_model.pkl")
 flag=0
 
-#This determines the scale of the region of interest(Bounded by the white rectangle)
+#This determines the scale of ROI(Region of Interest), which is bounded by the white rectangle.
 hscale=0.325 
 wscale=0.25  
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 while(True):    
     # Capture frame by frame from video source 0
     wordsb=words.copy()
@@ -36,7 +36,7 @@ while(True):
 
     for cnt in contours:
         [x, y, w, h] = cv2.boundingRect(cnt)
-        if w/h>2:
+        if w/h>3:
             blank[x]='_'
             fill.append([x,y])
         else:                       
@@ -44,7 +44,7 @@ while(True):
                 continue
             crop_closed = closed[y:y+h, x:x+w]
             r = cv2.countNonZero(crop_closed)/(w * h)
-            if r > 0.30:
+            if r > 0.20:
                 try:                    
                     #cv2.rectangle(org_img, (x, y), (x + w, y + h), (0, 0, 255), 2)
 #The values for thresholding changes with the lighting in the room
@@ -56,9 +56,9 @@ while(True):
                     nbr = clf.predict(np.array([roi_hog_fd], 'float64'))
                     blank[x]=letters[int(nbr[0])]
 #Uncomment the line below to see if the recognition of the given letters are correct                            
-                    cv2.putText(org_img,letters[int(nbr[0])].capitalize(),(int(wscale*x1)+x,int(hscale*y1)+y), font, 1, (255,0,0), 2, cv2.LINE_AA)
+                    #cv2.putText(org_img,letters[int(nbr[0])].capitalize(),(int(wscale*x1)+x,int(hscale*y1)+y), font, 1, (255,0,0), 2, cv2.LINE_AA)
 #Uncomment the line below to see if the detection and cleaning of the given letters are correct                 
-                    org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
+                    #org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
                 except:
                     "skip"
     input=','.join([blank[i] for i in sorted(blank)]).replace(',', '')
