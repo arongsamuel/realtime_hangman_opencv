@@ -14,7 +14,7 @@ flag=0
 hscale=0.325 
 wscale=0.25  
 
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(1)
 while(True):    
     # Capture frame by frame from video source 0
     wordsb=words.copy()
@@ -32,7 +32,7 @@ while(True):
     ret2, binary = cv2.threshold(gradient, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     morphStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (10, 7))  
     closed = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, morphStructure)
-    _, contours, hierarchy = cv2.findContours(closed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(closed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     for cnt in contours:
         [x, y, w, h] = cv2.boundingRect(cnt)
