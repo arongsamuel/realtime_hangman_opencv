@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import joblib
 from skimage.feature import hog
-from hangman import hangman_game
+from hangman_function import hangman
 f=open("words.txt","r")
 words = f.read().splitlines()
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -63,7 +63,7 @@ while(True):
                     "skip"
     input=','.join([blank[i] for i in sorted(blank)]).replace(',', '')
     print(input)
-    output=hangman_game(input,wordsb)
+    output=hangman(input,wordsb)
     if output:
         cv2.putText(org_img,str(flag+1)+" of "+str(len(output))+" solutions, press C to cycle through the solutions",(int((wscale/2)*x1),int((hscale/2)*y1)), font,0.5, (255,255,255), 1, cv2.LINE_AA)    
         try:                
