@@ -14,7 +14,7 @@ flag=0
 hscale=0.325 
 wscale=0.25  
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 while(True):    
     # Capture frame by frame from video source 0
     wordsb=words.copy()
@@ -61,8 +61,7 @@ while(True):
                     #org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
                 except:
                     "skip"
-    input=','.join([blank[i] for i in sorted(blank)]).replace(',', '')
-    print(input)
+    input=','.join([blank[i] for i in sorted(blank)]).replace(',', '')    
     output=hangman(input,wordsb)
     if output:
         cv2.putText(org_img,str(flag+1)+" of "+str(len(output))+" solutions, press C to cycle through the solutions",(int((wscale/2)*x1),int((hscale/2)*y1)), font,0.5, (255,255,255), 1, cv2.LINE_AA)    
@@ -73,14 +72,13 @@ while(True):
             
         except:
             "skip"
-    cv2.putText(org_img,"Pess Q to quit",(int((wscale)*x1),int(3*hscale*y1)), font,0.75, (255,255,255), 1, cv2.LINE_AA)                           
+    cv2.putText(org_img,"Press Q to quit",(int((wscale)*x1),int(3*hscale*y1)), font,0.75, (255,255,255), 1, cv2.LINE_AA)                           
     cv2.imshow('frame',org_img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     elif cv2.waitKey(99) & 0xFF == ord('c'):
-        if output:
-            print(output[flag])            
-        flag+=1
-        flag=flag%len(output)        
+        if output:                       
+            flag+=1
+            flag=flag%len(output)        
 cap.release()
 cv2.destroyAllWindows()

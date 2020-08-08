@@ -1,0 +1,4 @@
+joblib==0.16.0
+opencv-python==4.2.0.34
+scikit-image==0.17.2
+scikit-learn==0.23.2
