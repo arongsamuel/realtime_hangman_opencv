@@ -55,10 +55,10 @@ while(True):
                     roi_hog_fd = hog(cv2.bitwise_not(imout), orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualize=False)
                     nbr = clf.predict(np.array([roi_hog_fd], 'float64'))
                     blank[x]=letters[int(nbr[0])]
-#Uncomment the line below to see if the recognition of the given letters are correct                            
-                    #cv2.putText(org_img,letters[int(nbr[0])].capitalize(),(int(wscale*x1)+x,int(hscale*y1)+y), font, 1, (255,0,0), 2, cv2.LINE_AA)
+#Uncomment the line below to see if the prediction of the given letters are correct                            
+                    cv2.putText(org_img,letters[int(nbr[0])].capitalize(),(int(wscale*x1)+x,int(hscale*y1)+y), font, 1, (255,0,0), 2, cv2.LINE_AA)
 #Uncomment the line below to see if the detection and cleaning of the given letters are correct                 
-                    #org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
+                    org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
                 except:
                     "skip"
     input=','.join([blank[i] for i in sorted(blank)]).replace(',', '')    

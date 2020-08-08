@@ -3,6 +3,8 @@
 Ever played hangman in realtime using your webcam?<br>
 If not, go ahead and try this. I have used SVM instead of Neural Networks for faster execution, you could use the latter to better the accuracy of prediction.
 
+![](showtime.gif)
+
 ## Instructions
 
 - Run pip install -r requirements.txt
@@ -19,5 +21,5 @@ If not, go ahead and try this. I have used SVM instead of Neural Networks for fa
 - scikit-image
 - opencv-python
 
-![](showtime.gif)
+
 
