@@ -56,9 +56,9 @@ while(True):
                     nbr = clf.predict(np.array([roi_hog_fd], 'float64'))
                     blank[x]=letters[int(nbr[0])]
 #Uncomment the line below to see if the prediction of the given letters are correct                            
-                    cv2.putText(org_img,letters[int(nbr[0])].capitalize(),(int(wscale*x1)+x,int(hscale*y1)+y), font, 1, (255,0,0), 2, cv2.LINE_AA)
+                    #cv2.putText(org_img,letters[int(nbr[0])].capitalize(),(int(wscale*x1)+x,int(hscale*y1)+y), font, 1, (255,0,0), 2, cv2.LINE_AA)
 #Uncomment the line below to see if the detection and cleaning of the given letters are correct                 
-                    org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
+                    #org_img[int(hscale*y1)+y:int(hscale*y1)+y+h, int(wscale*x1)+x:int(wscale*x1)+x+w]=cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)                    
                 except:
                     "skip"
     input=','.join([blank[i] for i in sorted(blank)]).replace(',', '')    
@@ -73,7 +73,7 @@ while(True):
         except:
             "skip"
     cv2.putText(org_img,"Press Q to quit",(int((wscale)*x1),int(3*hscale*y1)), font,0.75, (255,255,255), 1, cv2.LINE_AA)                           
-    cv2.imshow('frame',org_img)
+    cv2.imshow('Hangman',org_img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     elif cv2.waitKey(99) & 0xFF == ord('c'):
