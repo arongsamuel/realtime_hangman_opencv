@@ -11,7 +11,7 @@ If not, go ahead and try this. I have used SVM instead of Neural Networks for fa
 - Run hangman.py
 - Place the word inside the white rectangle
 - Press C to cycle through the possible solutions and Q to quit
-- Use only uppercase letters
+- The background should be white and use only uppercase letters
 - Input words should follow this format: H _ _ G _ _ N 
 
 ## Requirements
@@ -19,7 +19,7 @@ If not, go ahead and try this. I have used SVM instead of Neural Networks for fa
 - Joblib
 - SkLearn
 - Scipy
-- OpenCV
+- OpenCV 4.x
 
 
 
