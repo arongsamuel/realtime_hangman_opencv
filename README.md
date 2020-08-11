@@ -21,5 +21,5 @@ If not, go ahead and try this. I have used SVM instead of Neural Networks for fa
 - Scipy
 - OpenCV 4.x
 
-[Behind the scenes][https://youtu.be/GIbuYeoexiU]  
+[Behind the scenes](https://youtu.be/GIbuYeoexiU)  
 
