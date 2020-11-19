@@ -1,5 +1,3 @@
-#f=open("words.txt","r")
-#words = f.read().splitlines()
 
 def hangman(input_word,words):
 	i = 0
